@@ -34,7 +34,7 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div className="app">
       <Timer currentPlayer={currentPlayer} restart={restart}/>
       <BoardComponent
       board={board}
