@@ -29,6 +29,9 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
+      - name: Init
+        run: npm start
+
       - name: Looking for something on main page
         run: npm start test:app
 
