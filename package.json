@@ -20,6 +20,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:app": "node ./src/App.test.tsx",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
