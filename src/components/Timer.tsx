@@ -27,11 +27,11 @@ const Timer: FC<TimerProps> = ({currentPlayer, restart}) => {
   }
 
   function decrementBlackTimer() {
-    setBlackTime(prev => prev - 1)
+    setBlackTime(prev => prev > 0 ? prev - 1 : 0)
   }
 
   function decrementWhiteTimer() {
-    setWhiteTime(prev => prev - 1)
+    setWhiteTime(prev => prev > 0 ? prev - 1 : 0)
   }
 
   const handleRestart = () => {
@@ -47,7 +47,6 @@ const Timer: FC<TimerProps> = ({currentPlayer, restart}) => {
       </div>
       <h2>Белые - {Math.floor(whiteTime / 60)}:{(whiteTime % 60) < 10 ? '0' + (whiteTime % 60) : (whiteTime % 60)}</h2>
       <h2>Черные - {Math.floor(blackTime / 60)}:{(blackTime % 60) < 10 ? '0' + (blackTime % 60) : (blackTime % 60)}</h2>
-
     </div>
   );
 };
