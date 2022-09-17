@@ -35,8 +35,8 @@ const Timer: FC<TimerProps> = ({currentPlayer, restart}) => {
   }
 
   const handleRestart = () => {
-    setWhiteTime(299);
-    setBlackTime(299);
+    setWhiteTime(300);
+    setBlackTime(300);
     restart();
   }
 
