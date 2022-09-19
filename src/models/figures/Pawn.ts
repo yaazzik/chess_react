@@ -44,3 +44,5 @@ export class Pawn extends Figure{
     this.isFirstStep = false;
   }
 }
+
+//test
