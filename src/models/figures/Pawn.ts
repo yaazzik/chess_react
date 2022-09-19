@@ -23,6 +23,9 @@ export class Pawn extends Figure{
     if ((target.y === this.cell.y + direction || this.isFirstStep
         && (target.y === this.cell.y + firstStepDirection))
       && target.x === this.cell.x
+      && this.cell.y + direction
+      && (this.cell.board.getCell(target.x, target.y - direction).isEmpty() ||
+        this.cell.board.getCell(target.x, target.y - direction).figure === this.cell.figure) // черотовщина не дает пешке перешагивать фигуры при ходе на 2 клетки вперед
       && this.cell.board.getCell(target.x, target.y).isEmpty()) {
       return true;
     }
