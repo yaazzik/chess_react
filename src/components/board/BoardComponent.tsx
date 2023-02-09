@@ -1,8 +1,9 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Board} from "../models/Board";
 import CellComponent from "./CellComponent";
-import {Cell} from "../models/Cell";
-import {Player} from "../models/Player";
+import {Cell} from "../../models/Cell";
+import {Board} from "../../models/Board";
+import {Player} from "../../models/Player";
+
 
 interface BoardProps {
   board: Board;

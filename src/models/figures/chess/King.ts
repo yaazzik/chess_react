@@ -1,14 +1,14 @@
 import {Figure, FigureNames} from "./Figure";
-import {Colors} from "../Colors";
-import {Cell} from "../Cell";
-import blackLogo from "../../assets/black-knight.png";
-import whiteLogo from "../../assets/white-knight.png";
+import {Colors} from "../../Colors";
+import {Cell} from "../../Cell";
+import blackLogo from "../../../assets/black-king.png";
+import whiteLogo from "../../../assets/white-king.png";
 
-export class Knight extends Figure{
+export class King extends Figure{
   constructor(color: Colors, cell: Cell) {
     super(color, cell);
     this.logo = color === Colors.BLACK ? blackLogo : whiteLogo;
-    this.name = FigureNames.KNIGHT;
+    this.name = FigureNames.KING;
   }
 
   canMove(target: Cell): boolean {
@@ -17,8 +17,7 @@ export class Knight extends Figure{
     const dx = Math.abs(this.cell.x - target.x);
     const dy = Math.abs(this.cell.y - target.y);
 
-
-    return (dx === 1 && dy === 2) || (dx === 2 && dy === 1);
+    return (dx === 1 && dy === 1) || (dx === 1 && dy === 1) || (dx === 1 && dy === 0) || (dx === 0 && dy === 1);
   }
 
 }
