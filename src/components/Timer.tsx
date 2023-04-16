@@ -5,11 +5,12 @@ import { Colors } from '../models/Colors'
 interface TimerProps{
   currentPlayer: Player | null;
   restart: () => void;
+  playersTime?: number;
 }
 
-const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
-  const [blackTime, setBlackTime] = useState(300)
-  const [whiteTime, setWhiteTime] = useState(300)
+const Timer: FC<TimerProps> = ({ currentPlayer, restart, playersTime = 300 }) => {
+  const [blackTime, setBlackTime] = useState(playersTime)
+  const [whiteTime, setWhiteTime] = useState(playersTime)
   const timer = useRef<null | ReturnType<typeof setInterval>>(null)
 
   useEffect(() => {
@@ -35,8 +36,8 @@ const Timer: FC<TimerProps> = ({ currentPlayer, restart }) => {
   }
 
   const handleRestart = () => {
-    setWhiteTime(300)
-    setBlackTime(300)
+    setWhiteTime(playersTime)
+    setBlackTime(playersTime)
     restart()
   }
 
