@@ -1,7 +1,9 @@
 import React from 'react'
-import { Meta, ComponentStory } from '@storybook/react'
+import { ComponentStory, Meta } from '@storybook/react'
 import LostFigures from '../components/LostFigures'
 import '../App.css'
+import { Figure } from '../models/figures/chess/Figure'
+import { Colors } from '../models/Colors'
 
 export default {
   title: 'interface/LostFigures',
@@ -16,6 +18,7 @@ const Template: ComponentStory<typeof LostFigures> = (args) => <LostFigures {...
 export const Primary = Template.bind({})
 Primary.args = {
   figures: [
+    new Figure(Colors.WHITE)
   ],
   title: 'Потерянные'
 }

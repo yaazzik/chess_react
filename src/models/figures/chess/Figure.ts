@@ -15,7 +15,7 @@ export enum FigureNames {
 export class Figure {
   color: Colors
   logo: typeof logo | null
-  cell: Cell
+  cell?: Cell
   name: FigureNames
   id: number
 
