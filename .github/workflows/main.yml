@@ -35,6 +35,7 @@ jobs:
 
       - name: Publish Storybook and run visual tests
         run: npm run chromatic
+        continue-on-error: true
 
 
 

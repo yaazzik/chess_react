@@ -9,4 +9,8 @@
       </DevServerState>
     </option>
   </component>
+  <component name="StorybookProjectConfigState">
+    <option name="defaultDirectory" value="$PROJECT_DIR$/src/stories" />
+    <option name="useDefaultDirectory" value="true" />
+  </component>
 </project>
