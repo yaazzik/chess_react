@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
 interface NavbarProps {
   className?: string;
 }
 
-const Navbar = ({className}: NavbarProps) => {
+const Navbar = ({ className }: NavbarProps) => {
   return (
     <div className={className}>
       <div>
@@ -12,7 +12,7 @@ const Navbar = ({className}: NavbarProps) => {
         <a className="navbar-link" href="/about">About</a>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

@@ -1,9 +1,8 @@
-import React, {FC, useEffect, useState} from 'react';
-import CellComponent from "./CellComponent";
-import {Cell} from "../../models/Cell";
-import {Board} from "../../models/Board";
-import {Player} from "../../models/Player";
-
+import React, { FC, useEffect, useState } from 'react'
+import CellComponent from './CellComponent'
+import { Cell } from '../../models/Cell'
+import { Board } from '../../models/Board'
+import { Player } from '../../models/Player'
 
 interface BoardProps {
   board: Board;
@@ -12,17 +11,17 @@ interface BoardProps {
   changePlayer: () => void;
 }
 
-const BoardComponent: FC<BoardProps> = ({board, setBoard, currentPlayer, changePlayer}) => {
-  const [selectedCell, setSelectedCell] = useState<Cell | null>(null);
+const BoardComponent: FC<BoardProps> = ({ board, setBoard, currentPlayer, changePlayer }) => {
+  const [selectedCell, setSelectedCell] = useState<Cell | null>(null)
 
-  function click(cell: Cell) {
-    if(selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)) {
+  const click = (cell: Cell) => {
+    if (selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)) {
       selectedCell.moveFigure(cell)
       changePlayer()
       setSelectedCell(null)
-    }else{
+    } else {
       if (cell.figure?.color === currentPlayer?.color) {
-        setSelectedCell(cell);
+        setSelectedCell(cell)
       }
     }
   }
@@ -31,16 +30,15 @@ const BoardComponent: FC<BoardProps> = ({board, setBoard, currentPlayer, changeP
     highlightCells()
   }, [selectedCell])
 
-  function highlightCells() {
+  function highlightCells () {
     board.highlightCells(selectedCell)
     updateBoard()
   }
 
-  function updateBoard() {
+  function updateBoard () {
     const newBoard = board.getCopyBoard()
     setBoard(newBoard)
   }
-
 
   return (
     <div>
@@ -60,7 +58,7 @@ const BoardComponent: FC<BoardProps> = ({board, setBoard, currentPlayer, changeP
           )}
         </div>
   </div>
-  );
-};
+  )
+}
 
-export default BoardComponent;
+export default BoardComponent
