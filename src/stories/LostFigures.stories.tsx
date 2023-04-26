@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof LostFigures> = (args) => <LostFigures {...
 export const Primary = Template.bind({})
 Primary.args = {
   figures: [
-    new Figure(Colors.WHITE)
+
   ],
   title: 'Потерянные'
 }
