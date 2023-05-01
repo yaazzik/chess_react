@@ -1,8 +1,9 @@
-import { Figure, FigureNames } from './Figure'
-import { Colors } from '../../Colors'
-import { Cell } from '../../Cell'
-import blackLogo from '../../../assets/black-pawn.png'
-import whiteLogo from '../../../assets/white-pawn.png'
+import {Figure, FigureNames} from './Figure'
+import {Colors} from 'models/Colors'
+import {Cell} from 'models/Cell'
+import blackLogo from 'assets/black-pawn.png'
+import whiteLogo from 'assets/white-pawn.png'
+import {Queen} from "./Queen";
 
 export class Pawn extends Figure {
   isFirstStep: boolean = true
@@ -18,13 +19,20 @@ export class Pawn extends Figure {
     const direction = this.cell.figure?.color === Colors.BLACK ? 1 : -1
     const firstStepDirection = this.cell.figure?.color === Colors.BLACK ? 2 : -2
 
-    if (((target.y === this.cell.y + direction) || (this.isFirstStep &&
-        (target.y === this.cell.y + firstStepDirection))) &&
-      (target.x === this.cell.x) &&
-      this.cell.y + direction &&
-      (this.cell.board.getCell(target.x, target.y - direction).isEmpty() ||
-        this.cell.board.getCell(target.x, target.y - direction).figure === this.cell.figure) && // черотовщина не дает пешке перешагивать фигуры при ходе на 2 клетки вперед
-      this.cell.board.getCell(target.x, target.y).isEmpty()) {
+    if (
+      target.y === this.cell.y + direction
+      && target.x === this.cell.x
+      && target.isEmpty()
+    ) {
+      return true
+    }
+
+    if (this.isFirstStep
+      && target.y === this.cell.y + firstStepDirection
+      && this.cell.board.getCell(this.cell.x,this.cell.y + direction).isEmpty()
+      && target.x === this.cell.x
+      && target.isEmpty()
+    ) {
       return true
     }
 
@@ -38,7 +46,11 @@ export class Pawn extends Figure {
   }
 
   moveFigure (target: Cell) {
-    super.moveFigure(target)
+    if (target.y === (this.color === Colors.WHITE ? 0 : 7)) {
+      super.moveFigure(target)
+      this.cell.figure = new Queen(this.color, target)
+    }
+    else super.moveFigure(target)
     this.isFirstStep = false
   }
 }
