@@ -8,8 +8,7 @@ const Navbar = ({ className }: NavbarProps) => {
   return (
     <div className={className}>
       <div>
-        <a className="navbar-link" href="#">Home</a>
-        <a className="navbar-link" href="/about">About</a>
+        <p className='header-text'>КЛАССИЧЕСКИЕ ШАХМАТЫ</p>
       </div>
     </div>
   )

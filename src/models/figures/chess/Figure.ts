@@ -15,7 +15,7 @@ export enum FigureNames {
 export class Figure {
   color: Colors
   logo: typeof logo | null
-  cell?: Cell
+  cell: Cell
   name: FigureNames
   id: number
 
@@ -38,4 +38,6 @@ export class Figure {
   moveFigure (target: Cell) {
 
   }
+
+  isFirstStep: boolean = false
 }
