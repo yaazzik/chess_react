@@ -13,6 +13,7 @@ export class King extends Figure {
   }
 
   canMove (target: Cell): boolean {
+    console.log(this.cell.board.getCell(0, this.color === Colors.WHITE ? 7 : 0).figure?.isFirstStep)
     if (!super.canMove(target)) { return false }
     const dx = Math.abs(this.cell.x - target.x)
     const dy = Math.abs(this.cell.y - target.y)
@@ -21,13 +22,12 @@ export class King extends Figure {
         && this.cell.board.getCell(1, this.cell.y).isEmpty()
         && this.cell.board.getCell(2, this.cell.y).isEmpty()
         && this.cell.board.getCell(3, this.cell.y).isEmpty()
-        && this.cell.board.getCell(0, this.color === Colors.WHITE ? 7 : 0).figure?.isFirstStep // У Figure нет свойства isFirstStep,
-                                                                                          // которое надо проверить у типа Rook,
-                                                                                          // который является дочерним для Figure
+        && this.cell.board.getCell(0, this.color === Colors.WHITE ? 7 : 0).figure?.isFirstStep
       )
       || (target.x === 6
         && this.cell.board.getCell(5, this.cell.y).isEmpty()
         && this.cell.board.getCell(6, this.cell.y).isEmpty()
+        && this.cell.board.getCell(7, this.color === Colors.WHITE ? 7 : 0).figure?.isFirstStep
       )
       )
       && (this.color === Colors.WHITE
@@ -44,7 +44,31 @@ export class King extends Figure {
   }
 
   moveFigure (target: Cell) {
-    super.moveFigure(target)
+    if ((target.x === 2)
+      && (this.color === Colors.WHITE
+        ? target.y === 7
+        : target.y === 0)
+      && ((this.cell.x === 4)
+        && (this.color === Colors.WHITE
+        ? this.cell.y === 7
+        : this.cell.y === 0))
+    ) {
+      super.moveFigure(target)
+      this.cell.board.getCell(0, this.color === Colors.WHITE ? 7 : 0).moveFigure(this.cell.board.getCell(3, this.color === Colors.WHITE ? 7 : 0))
+    }
+    else if ((target.x === 6)
+      && (this.color === Colors.WHITE
+        ? target.y === 7
+        : target.y === 0)
+      && ((this.cell.x === 4)
+        && (this.color === Colors.WHITE
+          ? this.cell.y === 7
+          : this.cell.y === 0))
+    ) {
+      super.moveFigure(target)
+      this.cell.board.getCell(7, this.color === Colors.WHITE ? 7 : 0).moveFigure(this.cell.board.getCell(5, this.color === Colors.WHITE ? 7 : 0))
+    }
+    else super.moveFigure(target)
     this.isFirstStep = false
   }
 }

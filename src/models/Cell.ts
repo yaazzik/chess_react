@@ -7,7 +7,7 @@ export class Cell {
   readonly x: number
   readonly y: number
   readonly color: Colors
-  figure: Figure | Rook | null
+  figure: Figure | null
   board: Board
   available: boolean
   id: number
