@@ -1,6 +1,7 @@
 import { Colors } from './Colors'
 import { Figure } from './figures/chess/Figure'
 import { Board } from './Board'
+import {Rook} from "./figures/chess/Rook";
 
 export class Cell {
   readonly x: number

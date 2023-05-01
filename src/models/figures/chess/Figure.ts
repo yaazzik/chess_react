@@ -38,4 +38,6 @@ export class Figure {
   moveFigure (target: Cell) {
 
   }
+
+  isFirstStep: boolean = false
 }
