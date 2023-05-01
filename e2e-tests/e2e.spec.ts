@@ -150,7 +150,7 @@ test.describe('Тесты доски', () => {
     expect(await page.locator('div.lost div').count()).toBe(1);
   })
 
-  test('TC-6: TC-6: Реакция приложения на попытку движения в неверном направлении', async ({ page }) => {
+  test('TC-6: Реакция приложения на попытку движения в неверном направлении', async ({ page }) => {
     let whitePawnStartCell = 49;
 
     await page.locator(`div.board div:nth-child(${whitePawnStartCell})`).click();
