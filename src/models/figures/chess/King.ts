@@ -17,7 +17,8 @@ export class King extends Figure {
     if (!super.canMove(target)) { return false }
     const dx = Math.abs(this.cell.x - target.x)
     const dy = Math.abs(this.cell.y - target.y)
-    if (this.isFirstStep && (
+
+    if (this.isFirstStep && (                                   // Castling rules 💩
       (target.x === 2
         && this.cell.board.getCell(1, this.cell.y).isEmpty()
         && this.cell.board.getCell(2, this.cell.y).isEmpty()
@@ -37,6 +38,7 @@ export class King extends Figure {
     ) {
       return true
     }
+
     if (dx <= 1 && dy <= 1) {
       return true
     }
