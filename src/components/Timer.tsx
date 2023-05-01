@@ -44,19 +44,19 @@ const Timer: FC<TimerProps> = ({ currentPlayer, restart, playersTime = 300 }) =>
   return (
     <div>
       <div>
-        <button className="btn" onClick={handleRestart}>Restart game</button>
+        <button className="btn" data-testid="Restart_Button" onClick={handleRestart}>Restart game</button>
       </div>
-      <h2>Черные - {Math.floor(blackTime / 60)}:{(blackTime % 60) < 10 ? '0' + (blackTime % 60) : (blackTime % 60)}</h2>
-      <h2>Белые - {Math.floor(whiteTime / 60)}:{(whiteTime % 60) < 10 ? '0' + (whiteTime % 60) : (whiteTime % 60)}</h2>
+      <h2 data-testid="Black_Timer">Черные - {Math.floor(blackTime / 60)}:{(blackTime % 60) < 10 ? '0' + (blackTime % 60) : (blackTime % 60)}</h2>
+      <h2 data-testid="White_Timer">Белые - {Math.floor(whiteTime / 60)}:{(whiteTime % 60) < 10 ? '0' + (whiteTime % 60) : (whiteTime % 60)}</h2>
         {whiteTime === 0
           ? (
-                <div>
+                <div data-testid="Black_Timeout_Win">
                     Черные победили по времени
                 </div>
             )
           : blackTime === 0
             ? (
-                <div>
+                <div data-testid="White_Timeout_Win">
                     Белые победили по времени
                 </div>)
             : null

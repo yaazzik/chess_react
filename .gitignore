@@ -24,3 +24,6 @@ yarn-error.log*
 /storybook-static/
 /build-storybook.log
 /.eslintrc.js
+/test-results/
+/playwright-report/
+/playwright/.cache/

@@ -32,6 +32,11 @@ jobs:
 
       - name: Running tests
         run: npm run test
+      
+      - name: Running e2e tests
+        run: |
+          npx playwright install
+          npx playwright test
 
       - name: Publish Storybook and run visual tests
         run: npm run chromatic
