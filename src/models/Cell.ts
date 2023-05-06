@@ -89,7 +89,7 @@ export class Cell {
   moveFigure (target: Cell) {
     if (this.figure && this.figure?.canMove(target)) {
       this.figure?.moveFigure(target)
-      if (target.figure) {
+      if (target.figure && (target.figure.color !== this.figure.color)) {
         this.addLostFigure(target.figure)
       }
       target.setFigure(this.figure)
